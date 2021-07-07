@@ -7,5 +7,5 @@ export default interface Host {
         lat:string,
         long:string
     },
-    interfaces:HostInterface[]
+    interfaces?:HostInterface[]
 };

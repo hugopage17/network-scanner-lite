@@ -63,7 +63,7 @@ var poll = function (host, repeat, timeout) { return __awaiter(void 0, void 0, v
                 return [2 /*return*/, __assign({ name: host.name, coordinates: {
                             lat: (_a = host.coordinates) === null || _a === void 0 ? void 0 : _a.lat,
                             long: (_b = host.coordinates) === null || _b === void 0 ? void 0 : _b.long
-                        } }, pollData)];
+                        }, interfaces: host.interfaces }, pollData)];
         }
     });
 }); };
@@ -106,10 +106,13 @@ var globalPoll = function (networks, repeat, timeout) { return __awaiter(void 0,
                     var nodes;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
-                            case 0: return [4 /*yield*/, clusterPoll(network.nodes, repeat, timeout)];
+                            case 0:
+                                if (!network.nodes) return [3 /*break*/, 2];
+                                return [4 /*yield*/, clusterPoll(network.nodes, repeat, timeout)];
                             case 1:
                                 nodes = _a.sent();
                                 return [2 /*return*/, { networkName: network.network_name, nodes: nodes }];
+                            case 2: return [2 /*return*/];
                         }
                     });
                 }); }))];

@@ -1,3 +1,4 @@
+import { HostInterface } from "./host-interface";
 export interface Response {
     name: string;
     inputHost: string;
@@ -12,6 +13,7 @@ export interface Response {
     stddev: string;
     packetLoss?: string;
     numeric_host: string;
+    interfaces?: HostInterface[];
     coordinates: {
         lat: string;
         long: string;

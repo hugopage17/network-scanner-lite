@@ -12,6 +12,7 @@ const poll = async(host: Host, repeat:number, timeout:number): Promise<Response>
             lat:host.coordinates?.lat,
             long:host.coordinates?.long
         },
+        interfaces:host.interfaces,
         ...pollData
     } as Response;
 };
@@ -32,7 +33,7 @@ const globalPoll = async(networks:Network[], repeat:number, timeout:number): Pro
     const response = await Promise.all(networks.map(async(network) => {
         if(network.nodes){
             const nodes = await clusterPoll(network.nodes, repeat, timeout);
-            return {networkName:network.network_name, nodes};
+            return { networkName:network.network_name, nodes };
         }  
     }));
     return response as NetworkResponse[];

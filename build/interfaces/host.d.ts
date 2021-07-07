@@ -1,3 +1,4 @@
+import { HostInterface } from './host-interface';
 export default interface Host {
     name?: string;
     ipAddress: string;
@@ -5,4 +6,5 @@ export default interface Host {
         lat: string;
         long: string;
     };
+    interfaces?: HostInterface[];
 }

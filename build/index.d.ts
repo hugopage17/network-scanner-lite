@@ -13,5 +13,6 @@ declare class NetworkScannerLite {
     clusterPing(hosts: Host[]): Promise<import("./interfaces/poll-response").Response[]>;
     globalPing(networks: Network[]): Promise<import("./interfaces/poll-response").NetworkResponse[]>;
     ipScan(range: string): Promise<IPScanResponse[]>;
+    ssh(host: string, username: string, command: string, identity?: string): Promise<any>;
 }
 export default NetworkScannerLite;

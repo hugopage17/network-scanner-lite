@@ -3,6 +3,7 @@ import Host from './interfaces/host';
 import { Network } from './interfaces/network';
 import { getRange } from './modules/get-range';
 import { IPScanResponse } from './interfaces/ip-scan-response';
+import { sshClient } from './modules/ssh-client';
 
 class NetworkScannerLite {
     repeat: number;
@@ -46,6 +47,11 @@ class NetworkScannerLite {
             }
         }));
         return response as IPScanResponse[];
+    };
+
+    async ssh(host:string, username:string, command:string, identity?:string): Promise<any>{
+        const client = await sshClient(host, username, command, identity);
+        return client;
     };
 };
 

@@ -38,6 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var pollers_1 = require("./modules/pollers");
 var get_range_1 = require("./modules/get-range");
+var ssh_client_1 = require("./modules/ssh-client");
 var NetworkScannerLite = /** @class */ (function () {
     function NetworkScannerLite() {
         this.repeat = 5;
@@ -133,6 +134,20 @@ var NetworkScannerLite = /** @class */ (function () {
                     case 1:
                         response = _a.sent();
                         return [2 /*return*/, response];
+                }
+            });
+        });
+    };
+    ;
+    NetworkScannerLite.prototype.ssh = function (host, username, command, identity) {
+        return __awaiter(this, void 0, void 0, function () {
+            var client;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, ssh_client_1.sshClient(host, username, command, identity)];
+                    case 1:
+                        client = _a.sent();
+                        return [2 /*return*/, client];
                 }
             });
         });
